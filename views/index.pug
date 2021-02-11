@@ -1,0 +1,33 @@
+doctype html
+html(lang="en" class="theme-light")
+    head
+       title Todo App
+       meta(name="viewport", content="width=device-width, initial-scale=1.0")
+       link(rel="icon", href="public/images/check.png")
+       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css") 
+       link(rel="stylesheet", href="public/css/main.css")
+       link(rel="stylesheet", href="public/css/colors.css")
+       link(href="https://fonts.googleapis.com/css2?family=Aclonica&family=Comfortaa&display=swap" rel="stylesheet")
+       script(src="https://kit.fontawesome.com/bf00fd2b3f.js", crossorigin="anonymous")
+    body
+        div#icon-container
+            i#icon.fas.fa-adjust
+        div#main-container
+            div#todo-box
+                h1 Todo List
+                h4#current-date
+                form(action='/', method='POST')
+                    input(type='text', name='content' placeholder='Add a new task...' autocomplete="off")
+                    button(type='submit') Add
+                //- display task data from database
+                each tasks, i in todotasks
+                    div.list-item
+                        div.tasks-holder
+                            p.task= tasks.content
+                        div.button-holder
+                            a.remove(href=`/remove/${tasks._id}`)
+                                i.fas.fa-times
+            
+            script(src="/public/js/themeToggle.js")
+            script(src="/public/js/checkItem.js")
+            script(src="/public/js/currentDate.js")
